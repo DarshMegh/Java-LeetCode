@@ -1,0 +1,29 @@
+package DynamicProgramming;
+
+/*
+ * Problem: 518. Coin Change II
+ * Difficulty: Medium
+ *
+ * Time Complexity: O(amount × coins)
+ * Space Complexity: O(amount)
+ */
+
+public class _0518_CoinChangeII {
+
+    public int change(int amount, int[] coins) {
+
+        int[] dp = new int[amount + 1];
+
+        dp[0] = 1;
+
+        for (int coin : coins) {
+
+            for (int i = coin; i <= amount; i++) {
+
+                dp[i] += dp[i - coin];
+            }
+        }
+
+        return dp[amount];
+    }
+}
